@@ -34,10 +34,11 @@ public interface ApiInterface {
                                       @Query("kategori") String kategori);
 
     /*
-     *selesai masak
+     *selesai masak / batal masak
      */
     @FormUrlEncoded
     @PUT("bagian_koki")
-    Call<ResponseDefault> selesaiMasak(@Field("idMenu") String idMenu,
+    Call<ResponseDefault> selesaiMasak(@Field("status") String Status,
+                                       @Field("idMenu") String idMenu,
                                        @Field("idPesanan") String idPesanan);
 }

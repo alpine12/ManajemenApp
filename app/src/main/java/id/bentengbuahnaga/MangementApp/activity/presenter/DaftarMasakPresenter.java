@@ -33,7 +33,8 @@ public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
                 if (response.isSuccessful() && response.body() != null) {
                     if (res.isStatus()) {
                         List<DaftarMasakModel> item = res.getDaftarMasak();
-                        v.loadItem(item);
+                        List<DaftarMasakModel> item2 = res.getDaftarSelesaiMasak();
+                        v.loadItem(item, item2);
                         v.tampilPesan(res.getMessage());
                     } else {
                         v.tampilPesan(res.getMessage());
@@ -47,12 +48,12 @@ public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
                 v.tampilPesan(t.getMessage());
             }
         });
-
     }
 
     @Override
-    public void selesaiMasak(String idMenu, String idPesanan) {
-        Call<ResponseDefault> selesaiMasak = InitRetrofit.getInstance().selesaiMasak(idMenu, idPesanan);
+    public void selesaiMasak(String status, String idMenu, String idPesanan) {
+        v.showLoading();
+        Call<ResponseDefault> selesaiMasak = InitRetrofit.getInstance().selesaiMasak(status,idMenu, idPesanan);
         selesaiMasak.enqueue(new Callback<ResponseDefault>() {
             @Override
             public void onResponse(Call<ResponseDefault> call, Response<ResponseDefault> response) {
@@ -60,9 +61,11 @@ public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
                 if (response.isSuccessful() && res != null) {
                     if (res.isStatus()) {
                         v.tampilPesan(res.getMessage());
+                        v.hideLoading();
                     } else {
                         v.tampilPesan(res.getMessage());
                         v.dataKosong();
+                        v.hideLoading();
                     }
                 }
             }
@@ -70,6 +73,7 @@ public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
             @Override
             public void onFailure(Call<ResponseDefault> call, Throwable t) {
                 v.tampilPesan(t.getMessage());
+                v.hideLoading();
             }
         });
     }
@@ -77,5 +81,19 @@ public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
     @Override
     public void setDatakosong() {
         v.dataKosong();
+    }
+
+    @Override
+    public void checkDataKosong(List<DaftarMasakModel> item, List<DaftarMasakModel> item2) {
+        if (item.size()<1){
+            v.hideRvDaftarMasak();
+        }else {
+            v.showRvDaftarMasak();
+        }
+        if (item2.size()<1){
+            v.hideRvDaftarSelesaiMasak();
+        }else {
+            v.showRvDaftarSelesaiMasak();
+        }
     }
 }

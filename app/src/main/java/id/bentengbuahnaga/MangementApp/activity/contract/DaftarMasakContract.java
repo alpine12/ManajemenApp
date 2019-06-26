@@ -14,12 +14,23 @@ public interface DaftarMasakContract {
 
         void initEvent();
 
-        void loadItem(List<DaftarMasakModel> item);
+        void loadItem(List<DaftarMasakModel> item, List<DaftarMasakModel> item2);
 
         void tampilPesan(String message);
 
+        void showLoading();
+
+        void hideLoading();
 
         void dataKosong();
+
+        void showRvDaftarMasak();
+
+        void showRvDaftarSelesaiMasak();
+
+        void hideRvDaftarMasak();
+
+        void hideRvDaftarSelesaiMasak();
     }
 
     interface Presenter {
@@ -27,8 +38,10 @@ public interface DaftarMasakContract {
 
         void daftarPesanan(String idPesanan);
 
-        void selesaiMasak(String idMenu,String idPesanan);
+        void selesaiMasak(String status,String idMenu,String idPesanan);
 
         void setDatakosong();
+
+        void checkDataKosong(List<DaftarMasakModel> item, List<DaftarMasakModel> item2);
     }
 }

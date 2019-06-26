@@ -11,6 +11,9 @@ import id.bentengbuahnaga.MangementApp.activity.model.LoginModel;
 
 public class ResponseDefault {
 
+    @SerializedName("daftar selesai masak")
+    private List<DaftarMasakModel> daftarSelesaiMasak;
+
     @SerializedName("daftar masak")
     private List<DaftarMasakModel> daftarMasak;
 
@@ -25,6 +28,10 @@ public class ResponseDefault {
 
     @SerializedName("status")
     private boolean status;
+
+    public List<DaftarMasakModel> getDaftarSelesaiMasak() {
+        return daftarSelesaiMasak;
+    }
 
     public List<DaftarMasakModel> getDaftarMasak() {
         return daftarMasak;
