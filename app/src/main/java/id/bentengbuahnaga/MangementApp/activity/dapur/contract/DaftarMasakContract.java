@@ -13,7 +13,9 @@ public interface DaftarMasakContract {
 
         void initEvent();
 
-        void loadItem(List<DaftarMasakModel> item, List<DaftarMasakModel> item2);
+        void loadDaftarMasak(List<DaftarMasakModel> item);
+
+        void loadDaftarSelesaiMasak(List<DaftarMasakModel> item);
 
         void tampilPesan(String message);
 
@@ -21,7 +23,9 @@ public interface DaftarMasakContract {
 
         void hideLoading();
 
-        void dataKosong();
+        void dataMasakKosong();
+
+        void dataSelsaiKosong();
 
         void showRvDaftarMasak();
 
@@ -37,10 +41,14 @@ public interface DaftarMasakContract {
 
         void daftarPesanan(String idPesanan);
 
+        void daftarSelesaiMasak(String idPesanan);
+
         void selesaiMasak(String status,String idMenu,String idPesanan);
 
-        void setDatakosong();
+        void setDataDaftarkosong();
 
-        void checkDataKosong(List<DaftarMasakModel> item, List<DaftarMasakModel> item2);
+        void setDataSelesaikosong();
+
+        void checkDataKosong(List<DaftarMasakModel> item);
     }
 }

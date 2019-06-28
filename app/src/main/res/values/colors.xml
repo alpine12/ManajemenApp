@@ -5,4 +5,13 @@
     <color name="colorAccent">#D81B60</color>
     <color name="bg">#F0F0F0</color>
     <color name="txt_color">#48495F</color>
+    <color name="red">#FF0000</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="pomegranate">#c0392b</color>
+    <color name="alizarin">#e74c3c</color>
+    <color name="background">#bdc3c7</color>
+    <color name="carrot">#e67e22</color>
+    <color name="junebud">#badc58</color>
+    <color name="concrete">#95a5a6</color>
 </resources>

@@ -6,7 +6,7 @@ import java.util.List;
 
 import id.bentengbuahnaga.MangementApp.activity.dapur.model.BerandaKokiModel;
 import id.bentengbuahnaga.MangementApp.activity.dapur.model.DaftarMasakModel;
-import id.bentengbuahnaga.MangementApp.activity.dapur.model.LoginModel;
+import id.bentengbuahnaga.MangementApp.activity.login.model.LoginModel;
 
 
 public class ResponseDefault {

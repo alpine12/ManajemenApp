@@ -1,12 +1,12 @@
-package id.bentengbuahnaga.MangementApp.activity.dapur.presenter;
+package id.bentengbuahnaga.MangementApp.activity.login.presenter;
 
 import com.pixplicity.easyprefs.library.Prefs;
 
-import id.bentengbuahnaga.MangementApp.activity.dapur.contract.LoginContract;
-import id.bentengbuahnaga.MangementApp.activity.dapur.model.LoginModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefault;
+import id.bentengbuahnaga.MangementApp.activity.login.contract.LoginContract;
+import id.bentengbuahnaga.MangementApp.activity.login.model.LoginModel;
 import id.bentengbuahnaga.MangementApp.helper.SharedPreff;
 import id.bentengbuahnaga.MangementApp.network.InitRetrofit;
-import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefault;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,7 +28,18 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void cekLogin() {
         if (Prefs.getBoolean(SharedPreff.getIsLogin(), false)) {
-            v.suksesLogin();
+            String loginLevel = Prefs.getString(SharedPreff.getBagian(), null);
+            if (loginLevel.equals("1")) {
+                v.suksesLogin(loginLevel);
+            } else if (loginLevel.equals("4")) {
+                v.suksesLogin(loginLevel);
+            } else if (loginLevel.equals("5")) {
+                v.suksesLogin(loginLevel);
+            } else if (loginLevel.equals("6")) {
+                v.suksesLogin(loginLevel);
+            } else {
+                v.tampilPesan("Hak akses tidak dimiliki");
+            }
         }
     }
 
@@ -41,9 +52,8 @@ public class LoginPresenter implements LoginContract.Presenter {
                 ResponseDefault res = response.body();
                 if (response.isSuccessful()) {
                     if (res.isStatus()) {
-
                         LoginModel item = res.getPengguna();
-                        v.suksesLogin();
+                        v.suksesLogin(item.getBagian());
                         v.saveSharedPreff(item);
                         v.tampilPesan(res.getMessage());
 

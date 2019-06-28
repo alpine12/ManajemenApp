@@ -1,5 +1,7 @@
 package id.bentengbuahnaga.MangementApp.activity.dapur.presenter;
 
+import android.util.Log;
+
 import java.util.List;
 
 import id.bentengbuahnaga.MangementApp.activity.dapur.contract.DaftarMasakContract;
@@ -11,6 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
+    private static final String TAG = "DaftarMasakPresenter";
     DaftarMasakContract.View v;
 
     public DaftarMasakPresenter(DaftarMasakContract.View v) {
@@ -25,7 +28,7 @@ public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
 
     @Override
     public void daftarPesanan(String idPesanan) {
-        Call<ResponseDefault> daftarPesanan = InitRetrofit.getInstance().daftarMasak(idPesanan, "1");
+        Call<ResponseDefault> daftarPesanan = InitRetrofit.getInstance().daftarMasak("daftar masak", idPesanan, "1");
         daftarPesanan.enqueue(new Callback<ResponseDefault>() {
             @Override
             public void onResponse(Call<ResponseDefault> call, Response<ResponseDefault> response) {
@@ -33,12 +36,11 @@ public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
                 if (response.isSuccessful() && response.body() != null) {
                     if (res.isStatus()) {
                         List<DaftarMasakModel> item = res.getDaftarMasak();
-                        List<DaftarMasakModel> item2 = res.getDaftarSelesaiMasak();
-                        v.loadItem(item, item2);
+                        v.loadDaftarMasak(item);
                         v.tampilPesan(res.getMessage());
                     } else {
                         v.tampilPesan(res.getMessage());
-                        v.dataKosong();
+                        v.dataMasakKosong();
                     }
                 }
             }
@@ -51,9 +53,37 @@ public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
     }
 
     @Override
+    public void daftarSelesaiMasak(String idPesanan) {
+        Call<ResponseDefault> daftarPesanan = InitRetrofit.getInstance().daftarMasak("daftar selesai", idPesanan, "1");
+        daftarPesanan.enqueue(new Callback<ResponseDefault>() {
+            @Override
+            public void onResponse(Call<ResponseDefault> call, Response<ResponseDefault> response) {
+                ResponseDefault res = response.body();
+                if (response.isSuccessful() && response.body() != null) {
+                    if (res.isStatus()) {
+                        List<DaftarMasakModel> item = res.getDaftarSelesaiMasak();
+                        Log.d(TAG, "onResponse: " + item.size());
+                        v.loadDaftarSelesaiMasak(item);
+                        v.tampilPesan(res.getMessage());
+                    } else {
+                        v.tampilPesan(res.getMessage());
+                        v.dataSelsaiKosong();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseDefault> call, Throwable t) {
+                v.tampilPesan(t.getMessage());
+            }
+        });
+
+    }
+
+    @Override
     public void selesaiMasak(String status, String idMenu, String idPesanan) {
         v.showLoading();
-        Call<ResponseDefault> selesaiMasak = InitRetrofit.getInstance().selesaiMasak(status,idMenu, idPesanan);
+        Call<ResponseDefault> selesaiMasak = InitRetrofit.getInstance().selesaiMasak(status, idMenu, idPesanan);
         selesaiMasak.enqueue(new Callback<ResponseDefault>() {
             @Override
             public void onResponse(Call<ResponseDefault> call, Response<ResponseDefault> response) {
@@ -64,7 +94,7 @@ public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
                         v.hideLoading();
                     } else {
                         v.tampilPesan(res.getMessage());
-                        v.dataKosong();
+                       // v.dataMasakKosong();
                         v.hideLoading();
                     }
                 }
@@ -79,21 +109,22 @@ public class DaftarMasakPresenter implements DaftarMasakContract.Presenter {
     }
 
     @Override
-    public void setDatakosong() {
-        v.dataKosong();
+    public void setDataDaftarkosong() {
+        v.dataMasakKosong();
     }
 
     @Override
-    public void checkDataKosong(List<DaftarMasakModel> item, List<DaftarMasakModel> item2) {
-        if (item.size()<1){
+    public void setDataSelesaikosong() {
+        v.dataSelsaiKosong();
+    }
+
+
+    @Override
+    public void checkDataKosong(List<DaftarMasakModel> item) {
+        if (item.size() < 1) {
             v.hideRvDaftarMasak();
-        }else {
+        } else {
             v.showRvDaftarMasak();
-        }
-        if (item2.size()<1){
-            v.hideRvDaftarSelesaiMasak();
-        }else {
-            v.showRvDaftarSelesaiMasak();
         }
     }
 }

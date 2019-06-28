@@ -1,4 +1,4 @@
-package id.bentengbuahnaga.MangementApp.activity;
+package id.bentengbuahnaga.MangementApp.activity.login;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,9 +14,12 @@ import com.pixplicity.easyprefs.library.Prefs;
 
 import id.bentengbuahnaga.MangementApp.R;
 import id.bentengbuahnaga.MangementApp.activity.dapur.BerandaKokiActivity;
-import id.bentengbuahnaga.MangementApp.activity.dapur.contract.LoginContract;
-import id.bentengbuahnaga.MangementApp.activity.dapur.model.LoginModel;
-import id.bentengbuahnaga.MangementApp.activity.dapur.presenter.LoginPresenter;
+import id.bentengbuahnaga.MangementApp.activity.dapur.MenuKoki;
+import id.bentengbuahnaga.MangementApp.activity.login.contract.LoginContract;
+import id.bentengbuahnaga.MangementApp.activity.login.model.LoginModel;
+import id.bentengbuahnaga.MangementApp.activity.login.presenter.LoginPresenter;
+import id.bentengbuahnaga.MangementApp.activity.owner.OwnerActivity;
+import id.bentengbuahnaga.MangementApp.activity.pelayan.PelayanActivity;
 import id.bentengbuahnaga.MangementApp.helper.PindahActivity;
 import id.bentengbuahnaga.MangementApp.helper.SharedPreff;
 
@@ -51,13 +54,20 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void suksesLogin() {
-        PindahActivity.Pindah(context, BerandaKokiActivity.class);
+    public void suksesLogin(String level) {
+        if (level.equals("1")) {
+            PindahActivity.Pindah(context, OwnerActivity.class);
+        } else if (level.equals("4")) {
+            PindahActivity.Pindah(context, PelayanActivity.class);
+        } else if (level.equals("5")) {
+            PindahActivity.Pindah(context, BerandaKokiActivity.class);
+        }else if (level.equals("6")) {
+            PindahActivity.Pindah(context, MenuKoki.class);
+        }
     }
 
     @Override
     public void saveSharedPreff(LoginModel item) {
-
         Prefs.putString(SharedPreff.getId_pengguna(), item.getIdPengguna());
         Prefs.putString(SharedPreff.getBagian(), item.getBagian());
         Prefs.putString(SharedPreff.getNama_pengguna(), item.getNamaPengguna());
@@ -68,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void tampilPesan(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "tampilPesan: "+ message);
+        Log.d(TAG, "tampilPesan: " + message);
     }
 
     public void login(View view) {

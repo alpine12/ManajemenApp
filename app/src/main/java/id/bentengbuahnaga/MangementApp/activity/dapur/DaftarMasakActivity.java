@@ -3,6 +3,7 @@ package id.bentengbuahnaga.MangementApp.activity.dapur;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -30,7 +31,8 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
     private RecyclerView rvDaftarMasak;
     private DaftarMasakAdapter adapter;
     private DaftarSelesaiMasakAdapter adapterSelesai;
-    private View notDataView;
+    private View notDataViewDaftar;
+    private View notDataViewSelesai;
     private TextView tvSelesaiMasak;
     private TextView tvDaftarMasak;
     private RecyclerView rvSelesaiMasak;
@@ -50,7 +52,8 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
         mContext = this;
         tvDaftarMasak = findViewById(R.id.tvDaftarMasak);
         rvDaftarMasak = findViewById(R.id.rv_daftarMasak);
-        notDataView = getLayoutInflater().inflate(R.layout.empety_view, (ViewGroup) rvDaftarMasak.getParent(), false);
+        notDataViewDaftar = getLayoutInflater().inflate(R.layout.empety_view, (ViewGroup) rvDaftarMasak.getParent(), false);
+        notDataViewSelesai = getLayoutInflater().inflate(R.layout.empety_view, (ViewGroup) rvDaftarMasak.getParent(), false);
         tvSelesaiMasak = findViewById(R.id.tv_selesaiMasak);
         rvSelesaiMasak = findViewById(R.id.rv_selesaiMasak);
         dialog = new ProgressDialog(this);
@@ -76,12 +79,10 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
     }
 
     @Override
-    public void loadItem(List<DaftarMasakModel> item, List<DaftarMasakModel> item2) {
-        presenter.checkDataKosong(item, item2);
+    public void loadDaftarMasak(List<DaftarMasakModel> item) {
+        //  presenter.checkDataKosong(item);
         adapter.setNewData(item);
-        adapterSelesai.setNewData(item2);
         adapter.notifyDataSetChanged();
-        adapterSelesai.notifyDataSetChanged();
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -91,15 +92,30 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
                         String idPesanan = getIntent().getStringExtra("param");
                         presenter.selesaiMasak("1", masak.getIdMenu(), idPesanan);
                         adapter.remove(position);
-                        presenter.daftarPesanan(idPesanan);
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                presenter.daftarSelesaiMasak(idPesanan);
+                            }
+                        }, 500);
+
                         //  presenter.checkDataKosong(item, item2);
                         if (item.size() < 1) {
-                            presenter.setDatakosong();
+                            presenter.setDataDaftarkosong();
                         }
                         break;
                 }
             }
         });
+//
+    }
+
+    @Override
+    public void loadDaftarSelesaiMasak(List<DaftarMasakModel> item) {
+        //  presenter.checkDataKosong(item);
+        adapterSelesai.setNewData(item);
+        adapterSelesai.notifyDataSetChanged();
         adapterSelesai.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -109,10 +125,17 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
                         String idPesanan = getIntent().getStringExtra("param");
                         presenter.selesaiMasak("0", masak.getIdMenu(), idPesanan);
                         adapterSelesai.remove(position);
-                        presenter.daftarPesanan(idPesanan);
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                presenter.daftarPesanan(idPesanan);
+                            }
+                        }, 500);
+
                         //  presenter.checkDataKosong(item, item2);
-                        if (item2.size() < 1) {
-                            presenter.setDatakosong();
+                        if (item.size() < 1) {
+                            presenter.setDataSelesaikosong();
                         }
                         break;
                 }
@@ -132,15 +155,20 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
 
     @Override
     public void hideLoading() {
-        if (dialog.isShowing()){
+        if (dialog.isShowing()) {
             dialog.dismiss();
         }
     }
 
     @Override
-    public void dataKosong() {
+    public void dataMasakKosong() {
         // adapter.setNewData(null);
-        adapter.setEmptyView(notDataView);
+        adapter.setEmptyView(notDataViewDaftar);
+    }
+
+    @Override
+    public void dataSelsaiKosong() {
+        adapterSelesai.setEmptyView(notDataViewSelesai);
     }
 
     @Override
@@ -172,6 +200,7 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
         super.onResume();
         String idPesanan = getIntent().getStringExtra("param");
         presenter.daftarPesanan(idPesanan);
+        presenter.daftarSelesaiMasak(idPesanan);
 
     }
 }

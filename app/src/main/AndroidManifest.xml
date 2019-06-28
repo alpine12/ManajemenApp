@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.dapur.DaftarMasakActivity"></activity>
+        <activity android:name=".activity.dapur.CekBahanActivity"></activity>
+        <activity android:name=".activity.dapur.MenuKoki" />
+        <activity android:name=".activity.owner.OwnerActivity" />
+        <activity android:name=".activity.pelayan.PelayanActivity" />
+        <activity android:name=".activity.dapur.DaftarMasakActivity" />
         <activity android:name=".activity.dapur.BerandaKokiActivity" />
 
         <service android:name=".service.Service">
@@ -21,7 +25,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

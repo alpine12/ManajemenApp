@@ -30,7 +30,8 @@ public interface ApiInterface {
      * daftar masak
      */
     @GET("bagian_koki")
-    Call<ResponseDefault> daftarMasak(@Query("idPesanan") String idPesanan,
+    Call<ResponseDefault> daftarMasak(@Query("param") String daftarMasak,
+                                      @Query("idPesanan") String idPesanan,
                                       @Query("kategori") String kategori);
 
     /*

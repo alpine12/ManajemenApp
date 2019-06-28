@@ -1,8 +1,8 @@
-package id.bentengbuahnaga.MangementApp.activity.dapur.model;
+package id.bentengbuahnaga.MangementApp.activity.login.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import id.bentengbuahnaga.MangementApp.activity.dapur.contract.LoginContract;
+import id.bentengbuahnaga.MangementApp.activity.login.contract.LoginContract;
 
 public class LoginModel implements LoginContract.Model {
 

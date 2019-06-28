@@ -1,6 +1,6 @@
-package id.bentengbuahnaga.MangementApp.activity.dapur.contract;
+package id.bentengbuahnaga.MangementApp.activity.login.contract;
 
-import id.bentengbuahnaga.MangementApp.activity.dapur.model.LoginModel;
+import id.bentengbuahnaga.MangementApp.activity.login.model.LoginModel;
 
 public interface LoginContract {
     interface Model {
@@ -12,7 +12,7 @@ public interface LoginContract {
 
         void initEvent();
 
-        void suksesLogin();
+        void suksesLogin(String level);
 
         void saveSharedPreff(LoginModel item);
 

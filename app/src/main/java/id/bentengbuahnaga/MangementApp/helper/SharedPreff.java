@@ -7,6 +7,11 @@ public class SharedPreff {
     private static String nama_pengguna = "nama_pengguna";
     private static String bagian = "bagian";
     private static String isLogin = "isLogin";
+    private static String levelLogin = "levelLogin";
+
+    public static String getLevelLogin() {
+        return levelLogin;
+    }
 
     public static String getIsLogin() {
         return isLogin;
