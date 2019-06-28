@@ -9,7 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InitRetrofit {
-    private static String URL = "http://192.168.4.102/";
+    private static String URL = "http://192.168.0.101/";
     private static String BaseUrl =URL+"simcafe/api_manajemen/";
     private static String IMG_URL = URL+"simcafe/assets/img/foto_menu/";
 

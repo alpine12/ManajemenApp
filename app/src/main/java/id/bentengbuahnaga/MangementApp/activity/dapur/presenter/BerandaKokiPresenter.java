@@ -1,12 +1,10 @@
-package id.bentengbuahnaga.MangementApp.activity.presenter;
-
-import android.util.Log;
+package id.bentengbuahnaga.MangementApp.activity.dapur.presenter;
 
 import java.util.List;
 
-import id.bentengbuahnaga.MangementApp.activity.contract.BerandaKokiContract;
-import id.bentengbuahnaga.MangementApp.activity.model.BerandaKokiModel;
-import id.bentengbuahnaga.MangementApp.activity.response_model.ResponseDefault;
+import id.bentengbuahnaga.MangementApp.activity.dapur.contract.BerandaKokiContract;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.BerandaKokiModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefault;
 import id.bentengbuahnaga.MangementApp.network.InitRetrofit;
 import retrofit2.Call;
 import retrofit2.Callback;

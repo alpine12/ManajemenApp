@@ -1,4 +1,4 @@
-package id.bentengbuahnaga.MangementApp.activity.adapter;
+package id.bentengbuahnaga.MangementApp.activity.dapur.adapter;
 
 import android.util.Log;
 import android.widget.Button;
@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.squareup.picasso.Picasso;
 
 import id.bentengbuahnaga.MangementApp.R;
-import id.bentengbuahnaga.MangementApp.activity.model.DaftarMasakModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.DaftarMasakModel;
 import id.bentengbuahnaga.MangementApp.network.InitRetrofit;
 
 public class DaftarSelesaiMasakAdapter extends BaseQuickAdapter<DaftarMasakModel, BaseViewHolder> {

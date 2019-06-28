@@ -1,6 +1,6 @@
 package id.bentengbuahnaga.MangementApp.network;
 
-import id.bentengbuahnaga.MangementApp.activity.response_model.ResponseDefault;
+import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefault;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

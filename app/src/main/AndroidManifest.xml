@@ -12,8 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.DaftarMasakActivity"></activity>
-        <activity android:name=".activity.BerandaKokiActivity" />
+        <activity android:name=".activity.dapur.DaftarMasakActivity"></activity>
+        <activity android:name=".activity.dapur.BerandaKokiActivity" />
 
         <service android:name=".service.Service">
             <intent-filter>

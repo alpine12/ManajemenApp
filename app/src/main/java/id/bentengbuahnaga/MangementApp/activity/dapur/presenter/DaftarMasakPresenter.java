@@ -1,10 +1,10 @@
-package id.bentengbuahnaga.MangementApp.activity.presenter;
+package id.bentengbuahnaga.MangementApp.activity.dapur.presenter;
 
 import java.util.List;
 
-import id.bentengbuahnaga.MangementApp.activity.contract.DaftarMasakContract;
-import id.bentengbuahnaga.MangementApp.activity.model.DaftarMasakModel;
-import id.bentengbuahnaga.MangementApp.activity.response_model.ResponseDefault;
+import id.bentengbuahnaga.MangementApp.activity.dapur.contract.DaftarMasakContract;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.DaftarMasakModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefault;
 import id.bentengbuahnaga.MangementApp.network.InitRetrofit;
 import retrofit2.Call;
 import retrofit2.Callback;

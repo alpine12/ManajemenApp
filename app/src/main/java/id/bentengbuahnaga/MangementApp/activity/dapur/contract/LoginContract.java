@@ -1,6 +1,6 @@
-package id.bentengbuahnaga.MangementApp.activity.contract;
+package id.bentengbuahnaga.MangementApp.activity.dapur.contract;
 
-import id.bentengbuahnaga.MangementApp.activity.model.LoginModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.LoginModel;
 
 public interface LoginContract {
     interface Model {

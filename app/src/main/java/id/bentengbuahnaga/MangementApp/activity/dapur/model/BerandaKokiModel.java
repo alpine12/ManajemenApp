@@ -1,8 +1,8 @@
-package id.bentengbuahnaga.MangementApp.activity.model;
+package id.bentengbuahnaga.MangementApp.activity.dapur.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import id.bentengbuahnaga.MangementApp.activity.contract.BerandaKokiContract;
+import id.bentengbuahnaga.MangementApp.activity.dapur.contract.BerandaKokiContract;
 
 public class BerandaKokiModel implements BerandaKokiContract.Model {
 

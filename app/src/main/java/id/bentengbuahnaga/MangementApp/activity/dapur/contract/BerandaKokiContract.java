@@ -1,8 +1,8 @@
-package id.bentengbuahnaga.MangementApp.activity.contract;
+package id.bentengbuahnaga.MangementApp.activity.dapur.contract;
 
 import java.util.List;
 
-import id.bentengbuahnaga.MangementApp.activity.model.BerandaKokiModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.BerandaKokiModel;
 
 public interface BerandaKokiContract {
     interface Model {

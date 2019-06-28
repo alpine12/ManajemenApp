@@ -1,4 +1,4 @@
-package id.bentengbuahnaga.MangementApp.activity;
+package id.bentengbuahnaga.MangementApp.activity.dapur;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,11 +17,11 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import java.util.List;
 
 import id.bentengbuahnaga.MangementApp.R;
-import id.bentengbuahnaga.MangementApp.activity.adapter.DaftarMasakAdapter;
-import id.bentengbuahnaga.MangementApp.activity.adapter.DaftarSelesaiMasakAdapter;
-import id.bentengbuahnaga.MangementApp.activity.contract.DaftarMasakContract;
-import id.bentengbuahnaga.MangementApp.activity.model.DaftarMasakModel;
-import id.bentengbuahnaga.MangementApp.activity.presenter.DaftarMasakPresenter;
+import id.bentengbuahnaga.MangementApp.activity.dapur.adapter.DaftarMasakAdapter;
+import id.bentengbuahnaga.MangementApp.activity.dapur.adapter.DaftarSelesaiMasakAdapter;
+import id.bentengbuahnaga.MangementApp.activity.dapur.contract.DaftarMasakContract;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.DaftarMasakModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.presenter.DaftarMasakPresenter;
 
 public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasakContract.View {
     private static final String TAG = "DaftarMasakActivity";

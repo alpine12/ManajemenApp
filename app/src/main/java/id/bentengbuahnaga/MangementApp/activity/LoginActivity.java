@@ -13,9 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import id.bentengbuahnaga.MangementApp.R;
-import id.bentengbuahnaga.MangementApp.activity.contract.LoginContract;
-import id.bentengbuahnaga.MangementApp.activity.model.LoginModel;
-import id.bentengbuahnaga.MangementApp.activity.presenter.LoginPresenter;
+import id.bentengbuahnaga.MangementApp.activity.dapur.BerandaKokiActivity;
+import id.bentengbuahnaga.MangementApp.activity.dapur.contract.LoginContract;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.LoginModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.presenter.LoginPresenter;
 import id.bentengbuahnaga.MangementApp.helper.PindahActivity;
 import id.bentengbuahnaga.MangementApp.helper.SharedPreff;
 

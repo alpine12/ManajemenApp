@@ -1,18 +1,14 @@
-package id.bentengbuahnaga.MangementApp.activity.adapter;
+package id.bentengbuahnaga.MangementApp.activity.dapur.adapter;
 
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
-
 import id.bentengbuahnaga.MangementApp.R;
-import id.bentengbuahnaga.MangementApp.activity.model.DaftarMasakModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.DaftarMasakModel;
 import id.bentengbuahnaga.MangementApp.network.InitRetrofit;
 
 public class DaftarMasakAdapter extends BaseQuickAdapter<DaftarMasakModel, BaseViewHolder> {

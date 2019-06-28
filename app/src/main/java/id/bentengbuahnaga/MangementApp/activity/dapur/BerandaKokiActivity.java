@@ -1,8 +1,7 @@
-package id.bentengbuahnaga.MangementApp.activity;
+package id.bentengbuahnaga.MangementApp.activity.dapur;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -16,10 +15,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import java.util.List;
 
 import id.bentengbuahnaga.MangementApp.R;
-import id.bentengbuahnaga.MangementApp.activity.adapter.BerandaKokiAdapter;
-import id.bentengbuahnaga.MangementApp.activity.contract.BerandaKokiContract;
-import id.bentengbuahnaga.MangementApp.activity.model.BerandaKokiModel;
-import id.bentengbuahnaga.MangementApp.activity.presenter.BerandaKokiPresenter;
+import id.bentengbuahnaga.MangementApp.activity.dapur.adapter.BerandaKokiAdapter;
+import id.bentengbuahnaga.MangementApp.activity.dapur.contract.BerandaKokiContract;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.BerandaKokiModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.presenter.BerandaKokiPresenter;
 import id.bentengbuahnaga.MangementApp.helper.PindahActivity;
 
 public class BerandaKokiActivity extends AppCompatActivity implements BerandaKokiContract.View {

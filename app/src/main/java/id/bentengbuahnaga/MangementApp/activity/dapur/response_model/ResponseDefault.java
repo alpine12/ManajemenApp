@@ -1,12 +1,12 @@
-package id.bentengbuahnaga.MangementApp.activity.response_model;
+package id.bentengbuahnaga.MangementApp.activity.dapur.response_model;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import id.bentengbuahnaga.MangementApp.activity.model.BerandaKokiModel;
-import id.bentengbuahnaga.MangementApp.activity.model.DaftarMasakModel;
-import id.bentengbuahnaga.MangementApp.activity.model.LoginModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.BerandaKokiModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.DaftarMasakModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.LoginModel;
 
 
 public class ResponseDefault {

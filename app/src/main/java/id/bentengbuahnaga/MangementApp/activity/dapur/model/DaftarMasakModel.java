@@ -1,8 +1,8 @@
-package id.bentengbuahnaga.MangementApp.activity.model;
+package id.bentengbuahnaga.MangementApp.activity.dapur.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import id.bentengbuahnaga.MangementApp.activity.contract.DaftarMasakContract;
+import id.bentengbuahnaga.MangementApp.activity.dapur.contract.DaftarMasakContract;
 
 public class DaftarMasakModel implements DaftarMasakContract.Model {
 
