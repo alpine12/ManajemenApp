@@ -1,10 +1,13 @@
 package id.bentengbuahnaga.MangementApp.activity.dapur.presenter;
 
+import com.pixplicity.easyprefs.library.Prefs;
+
 import java.util.List;
 
 import id.bentengbuahnaga.MangementApp.activity.dapur.contract.BerandaKokiContract;
 import id.bentengbuahnaga.MangementApp.activity.dapur.model.BerandaKokiModel;
 import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefault;
+import id.bentengbuahnaga.MangementApp.helper.SharedPreff;
 import id.bentengbuahnaga.MangementApp.network.InitRetrofit;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +29,14 @@ public class BerandaKokiPresenter implements BerandaKokiContract.Presenter {
 
     @Override
     public void daftarPesanan() {
-        Call<ResponseDefault> daftarPesanan = InitRetrofit.getInstance().daftarPesanan("daftar meja", "1");
+        String bagian = Prefs.getString(SharedPreff.getBagian(), null);
+        String kategori = null;
+        if (bagian.equals("5")){
+            kategori = "2";
+        }else if (bagian.equals("6")){
+            kategori = "1";
+        }
+        Call<ResponseDefault> daftarPesanan = InitRetrofit.getInstance().daftarPesanan("daftar meja", bagian,kategori);
         daftarPesanan.enqueue(new Callback<ResponseDefault>() {
             @Override
             public void onResponse(Call<ResponseDefault> call, Response<ResponseDefault> response) {

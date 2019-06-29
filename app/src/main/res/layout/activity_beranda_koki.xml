@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/_4sdp"
     tools:context=".activity.dapur.BerandaKokiActivity">
 
     <androidx.recyclerview.widget.RecyclerView

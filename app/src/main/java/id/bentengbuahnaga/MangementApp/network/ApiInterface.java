@@ -24,6 +24,7 @@ public interface ApiInterface {
      */
     @GET("bagian_koki")
     Call<ResponseDefault> daftarPesanan(@Query("param") String param,
+                                        @Query("bagian") String bagian,
                                         @Query("kategori") String kategori);
 
     /*

@@ -82,7 +82,7 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
     public void loadDaftarMasak(List<DaftarMasakModel> item) {
         //  presenter.checkDataKosong(item);
         adapter.setNewData(item);
-        adapter.notifyDataSetChanged();
+        // adapter.notifyDataSetChanged();
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -98,7 +98,7 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
                             public void run() {
                                 presenter.daftarSelesaiMasak(idPesanan);
                             }
-                        }, 500);
+                        }, 1000);
 
                         //  presenter.checkDataKosong(item, item2);
                         if (item.size() < 1) {
@@ -115,7 +115,7 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
     public void loadDaftarSelesaiMasak(List<DaftarMasakModel> item) {
         //  presenter.checkDataKosong(item);
         adapterSelesai.setNewData(item);
-        adapterSelesai.notifyDataSetChanged();
+        // adapterSelesai.notifyDataSetChanged();
         adapterSelesai.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -131,7 +131,7 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
                             public void run() {
                                 presenter.daftarPesanan(idPesanan);
                             }
-                        }, 500);
+                        }, 1000);
 
                         //  presenter.checkDataKosong(item, item2);
                         if (item.size() < 1) {
@@ -162,7 +162,6 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
 
     @Override
     public void dataMasakKosong() {
-        // adapter.setNewData(null);
         adapter.setEmptyView(notDataViewDaftar);
     }
 
