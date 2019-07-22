@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="id.bentengbuahnaga.MangementApp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -7,32 +8,52 @@
     <application
         android:name=".app.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".activity.dapur.CekBahanActivity"></activity>
-        <activity android:name=".activity.dapur.MenuKoki" />
-        <activity android:name=".activity.owner.OwnerActivity" />
-        <activity android:name=".activity.pelayan.PelayanActivity" />
-        <activity android:name=".activity.dapur.DaftarMasakActivity" />
-        <activity android:name=".activity.dapur.BerandaKokiActivity" />
+        android:usesCleartextTraffic="true"
+        tools:replace="android:icon">
 
-        <service android:name=".service.Service">
+        <service android:name=".services.FirebaseMessaging">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.login.LoginActivity">
+        <activity android:name=".activity.dapur.CekBahanActivity"></activity>
+        <activity
+            android:name=".activity.dapur.MenuKoki"
+            android:label="Beranda"
+            android:theme="@style/MenuTheme" />
+        <activity
+            android:name=".activity.owner.OwnerActivity"
+            android:theme="@style/MenuTheme" />
+        <activity
+            android:name=".activity.pelayan.PelayanActivity"
+            android:label="Daftar Antar"
+            android:theme="@style/MenuTheme" />
+        <activity android:name=".activity.dapur.DaftarMasakActivity" />
+        <activity android:name=".activity.dapur.BerandaKokiActivity" />
+        <activity android:name=".activity.login.LoginActivity" />
+
+        <service android:name=".services.FirebaseMessaging">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -25,6 +25,6 @@ public interface LoginContract {
 
         void cekLogin();
 
-        void login(String user, String Pass);
+        void login(String user, String Pass,  String Token);
     }
 }

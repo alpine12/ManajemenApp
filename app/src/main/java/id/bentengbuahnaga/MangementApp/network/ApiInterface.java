@@ -1,6 +1,7 @@
 package id.bentengbuahnaga.MangementApp.network;
 
-import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefault;
+import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefaultKoki;
+import id.bentengbuahnaga.MangementApp.activity.pelayan.response_model.ResponseDefaultPelayan;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -16,31 +17,62 @@ public interface ApiInterface {
      */
     @FormUrlEncoded
     @POST("auth")
-    Call<ResponseDefault> ceklogin(@Field("user") String user,
-                                   @Field("pass") String pass);
+    Call<ResponseDefaultKoki> ceklogin(@Field("user") String user,
+                                       @Field("pass") String pass,
+                                       @Field("token") String token);
 
     /*
      * daftar pesanan
      */
     @GET("bagian_koki")
-    Call<ResponseDefault> daftarPesanan(@Query("param") String param,
-                                        @Query("bagian") String bagian,
-                                        @Query("kategori") String kategori);
+    Call<ResponseDefaultKoki> daftarPesanan(@Query("param") String param,
+                                            @Query("bagian") String bagian,
+                                            @Query("kategori") String kategori);
 
     /*
      * daftar masak
      */
     @GET("bagian_koki")
-    Call<ResponseDefault> daftarMasak(@Query("param") String daftarMasak,
-                                      @Query("idPesanan") String idPesanan,
-                                      @Query("kategori") String kategori);
+    Call<ResponseDefaultKoki> daftarMasak(@Query("param") String daftarMasak,
+                                          @Query("idPesanan") String idPesanan,
+                                          @Query("kategori") String kategori);
 
     /*
      *selesai masak / batal masak
      */
     @FormUrlEncoded
     @PUT("bagian_koki")
-    Call<ResponseDefault> selesaiMasak(@Field("status") String Status,
-                                       @Field("idMenu") String idMenu,
-                                       @Field("idPesanan") String idPesanan);
+    Call<ResponseDefaultKoki> selesaiMasak(@Field("status") String Status,
+                                           @Field("idMenu") String idMenu,
+                                           @Field("idPesanan") String idPesanan);
+
+    /*
+     * Daftar Antar Pelayan
+     */
+    @GET("pelayan")
+    Call<ResponseDefaultPelayan> daftarAntar();
+
+    /*
+     * Update Daftar Antar Pelayan
+     */
+    @FormUrlEncoded
+    @PUT("pelayan")
+    Call<ResponseDefaultPelayan> updatePelayan(@Field("status_antar") String status,
+                                               @Field("id_pesanan") String idPesanan,
+                                               @Field("id_menu") String idMenu);
+
+    /*
+     * Cek Bahan
+     */
+    @GET("cek_bahan")
+    Call<ResponseDefaultKoki> bahan(@Query("bagian") String Bagian);
+
+    /*
+     * Update Bahan
+     */
+    @FormUrlEncoded
+    @PUT("cek_bahan")
+    Call<ResponseDefaultKoki> update_bahan(@Field("id_bahan") String idBahan,
+                                           @Field("qty") String Qty);
+
 }

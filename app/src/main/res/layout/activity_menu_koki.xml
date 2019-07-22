@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="100"
+    android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
     tools:context=".activity.dapur.MenuKoki">
 
     <androidx.cardview.widget.CardView

@@ -1,5 +1,6 @@
 package id.bentengbuahnaga.MangementApp.activity.dapur.adapter;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import id.bentengbuahnaga.MangementApp.R;
 import id.bentengbuahnaga.MangementApp.activity.dapur.model.DaftarMasakModel;
 import id.bentengbuahnaga.MangementApp.network.InitRetrofit;
+import mehdi.sakout.fancybuttons.FancyButton;
 
 public class DaftarSelesaiMasakAdapter extends BaseQuickAdapter<DaftarMasakModel, BaseViewHolder> {
 
@@ -28,7 +30,8 @@ public class DaftarSelesaiMasakAdapter extends BaseQuickAdapter<DaftarMasakModel
                 .into((ImageView) helper.getView(R.id.imgIconMenu));
         ((TextView) helper.getView(R.id.tv_namaMenu)).setText(item.getNamaMenu());
         ((TextView) helper.getView(R.id.tv_totalMenu)).setText("Jumlah Pesanan : " + item.getJumlah());
-        ((Button) helper.getView(R.id.btn_selesai)).setText("batal");
+        ((FancyButton) helper.getView(R.id.btn_selesai)).setText("batal");
+        ((FancyButton) helper.getView(R.id.btn_selesai)).setBackgroundColor(Color.parseColor("#c0392b"));
         helper.addOnClickListener(R.id.btn_selesai);
 
     }

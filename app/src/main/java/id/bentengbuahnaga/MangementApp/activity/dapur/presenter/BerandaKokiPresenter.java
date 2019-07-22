@@ -6,7 +6,7 @@ import java.util.List;
 
 import id.bentengbuahnaga.MangementApp.activity.dapur.contract.BerandaKokiContract;
 import id.bentengbuahnaga.MangementApp.activity.dapur.model.BerandaKokiModel;
-import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefault;
+import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefaultKoki;
 import id.bentengbuahnaga.MangementApp.helper.SharedPreff;
 import id.bentengbuahnaga.MangementApp.network.InitRetrofit;
 import retrofit2.Call;
@@ -36,11 +36,11 @@ public class BerandaKokiPresenter implements BerandaKokiContract.Presenter {
         }else if (bagian.equals("6")){
             kategori = "1";
         }
-        Call<ResponseDefault> daftarPesanan = InitRetrofit.getInstance().daftarPesanan("daftar meja", bagian,kategori);
-        daftarPesanan.enqueue(new Callback<ResponseDefault>() {
+        Call<ResponseDefaultKoki> daftarPesanan = InitRetrofit.getInstance().daftarPesanan("daftar meja", bagian,kategori);
+        daftarPesanan.enqueue(new Callback<ResponseDefaultKoki>() {
             @Override
-            public void onResponse(Call<ResponseDefault> call, Response<ResponseDefault> response) {
-                ResponseDefault res = response.body();
+            public void onResponse(Call<ResponseDefaultKoki> call, Response<ResponseDefaultKoki> response) {
+                ResponseDefaultKoki res = response.body();
                 if (response.isSuccessful() && response.body() != null) {
                     if (res.isStatus()) {
                         List<BerandaKokiModel> item = res.getDaftarPesanan();
@@ -54,7 +54,7 @@ public class BerandaKokiPresenter implements BerandaKokiContract.Presenter {
             }
 
             @Override
-            public void onFailure(Call<ResponseDefault> call, Throwable t) {
+            public void onFailure(Call<ResponseDefaultKoki> call, Throwable t) {
                 v.tampilPesan(t.getMessage());
             }
         });

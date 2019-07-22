@@ -9,11 +9,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InitRetrofit {
-    private static String URL = "http://192.168.4.102/";
-    private static String BaseUrl =URL+"simcafe/api_manajemen/";
-    private static String IMG_URL = URL+"simcafe/assets/img/foto_menu/";
+//    private static String URL = "http://192.168.43.238/";
+//    private static String BaseUrl =URL+"simcafe/api_manajemen/";
+//    private static String IMG_URL = URL+"simcafe/assets/img/foto_menu/";
 
-
+    private static final String BASE_URL ="https://api.hometech.web.id/api_manajemen/";
+    private static final String ASSETS = "https://manajemen.hometech.web.id/assets/img/";
+    private static final String IMAGEURL = ASSETS+"foto_menu/";
 
     private static Retrofit init(){
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -25,7 +27,7 @@ public class InitRetrofit {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BaseUrl)
+                .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
@@ -38,6 +40,6 @@ public class InitRetrofit {
     }
 
     public static String getImgUrl(){
-        return IMG_URL;
+        return IMAGEURL;
     }
 }

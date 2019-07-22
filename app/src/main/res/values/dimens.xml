@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="padingDeafault">@dimen/_16sdp</dimen>
+    <dimen name="textSizeToolbar">@dimen/_18ssp</dimen>
+    <dimen name="paddingButtonTextview">@dimen/_15sdp</dimen>
+    <dimen name="activityPadding">@dimen/_16sdp</dimen>
+    <dimen name="placeholderImage">@dimen/_60sdp</dimen>
+    <dimen name="placeholderTextHeight">@dimen/_8sdp</dimen>
+    <dimen name="padding_10">@dimen/_10sdp</dimen>
+    <dimen name="toolbarHeight">@dimen/_50sdp</dimen>
+
+</resources>

@@ -20,6 +20,7 @@ public class BerandaKokiAdapter extends BaseQuickAdapter<BerandaKokiModel, BaseV
     protected void convert(BaseViewHolder helper, BerandaKokiModel item) {
         ((TextView) helper.getView(R.id.tv_kodeMeja)).setText(item.getKodeMeja());
         ((TextView) helper.getView(R.id.tv_catatan)).setText(item.getCatatan());
+        helper.setText(R.id.tv_jumlahPesan, item.getJumlah()+" Pesanan");
         Log.d(TAG, "convert: "+item.getKodeMeja());
         helper.addOnClickListener(R.id.linearLayout);
     }

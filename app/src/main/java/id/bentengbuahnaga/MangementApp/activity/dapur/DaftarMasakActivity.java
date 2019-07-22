@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,8 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
     private TextView tvDaftarMasak;
     private RecyclerView rvSelesaiMasak;
     private ProgressDialog dialog;
+    private ImageButton back;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,8 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
     @Override
     public void initView() {
         mContext = this;
-        tvDaftarMasak = findViewById(R.id.tvDaftarMasak);
+        back = findViewById(R.id.backArrow);
+        title = findViewById(R.id.title_toolbar);
         rvDaftarMasak = findViewById(R.id.rv_daftarMasak);
         notDataViewDaftar = getLayoutInflater().inflate(R.layout.empety_view, (ViewGroup) rvDaftarMasak.getParent(), false);
         notDataViewSelesai = getLayoutInflater().inflate(R.layout.empety_view, (ViewGroup) rvDaftarMasak.getParent(), false);
@@ -63,6 +67,14 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
     public void initEvent() {
         dialog.setCancelable(false);
         dialog.setMessage("Mohon Tunggu ... ");
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        title.setText("Daftar Masak");
 
         rvDaftarMasak.setHasFixedSize(true);
         rvDaftarMasak.setLayoutManager(new LinearLayoutManager(this));

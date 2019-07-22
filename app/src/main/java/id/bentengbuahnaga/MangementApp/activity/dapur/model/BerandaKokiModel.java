@@ -9,6 +9,9 @@ public class BerandaKokiModel implements BerandaKokiContract.Model {
     @SerializedName("catatan")
     private String catatan;
 
+    @SerializedName("jumlah")
+    private String jumlah;
+
     @SerializedName("kode_meja")
     private String kodeMeja;
 
@@ -17,6 +20,10 @@ public class BerandaKokiModel implements BerandaKokiContract.Model {
 
     public String getIdPesanan() {
         return idPesanan;
+    }
+
+    public String getJumlah() {
+        return jumlah;
     }
 
     public String getCatatan() {

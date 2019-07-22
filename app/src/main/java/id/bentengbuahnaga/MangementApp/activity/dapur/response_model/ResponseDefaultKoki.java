@@ -5,11 +5,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 import id.bentengbuahnaga.MangementApp.activity.dapur.model.BerandaKokiModel;
+import id.bentengbuahnaga.MangementApp.activity.dapur.model.CekBahanModel;
 import id.bentengbuahnaga.MangementApp.activity.dapur.model.DaftarMasakModel;
 import id.bentengbuahnaga.MangementApp.activity.login.model.LoginModel;
 
 
-public class ResponseDefault {
+public class ResponseDefaultKoki {
+
+    @SerializedName("daftar bahan")
+    private List<CekBahanModel> daftarBahan;
 
     @SerializedName("daftar selesai masak")
     private List<DaftarMasakModel> daftarSelesaiMasak;
@@ -28,6 +32,10 @@ public class ResponseDefault {
 
     @SerializedName("status")
     private boolean status;
+
+    public List<CekBahanModel> getDaftarBahan() {
+        return daftarBahan;
+    }
 
     public List<DaftarMasakModel> getDaftarSelesaiMasak() {
         return daftarSelesaiMasak;

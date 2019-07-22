@@ -8,8 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import id.bentengbuahnaga.MangementApp.R;
@@ -30,6 +36,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private EditText user;
     private EditText pass;
     private Button login;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void initEvent() {
         presenter.cekLogin();
+        getToken();
     }
 
     @Override
@@ -60,10 +68,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         } else if (level.equals("4")) {
             PindahActivity.Pindah(context, PelayanActivity.class);
         } else if (level.equals("5")) {
-            PindahActivity.Pindah(context, BerandaKokiActivity.class);
-        }else if (level.equals("6")) {
+            PindahActivity.Pindah(context, MenuKoki.class);
+        } else if (level.equals("6")) {
             PindahActivity.Pindah(context, MenuKoki.class);
         }
+        finish();
     }
 
     @Override
@@ -83,6 +92,25 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     public void login(View view) {
 
-        presenter.login(user.getText().toString(), pass.getText().toString());
+        presenter.login(user.getText().toString(), pass.getText().toString(), token);
+    }
+
+    private void getToken() {
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            return;
+                        }
+                        // Get new Instance ID token
+                        token = task.getResult().getToken();
+                        // Log and toast
+                        String msg = "Token Result : " + token;
+                        Log.d(TAG, msg);
+                        //Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

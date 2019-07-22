@@ -2,48 +2,68 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical"
-    android:layout_margin="@dimen/_2sdp"
-    android:padding="@dimen/_4sdp">
+    android:layout_marginTop="@dimen/_1sdp"
+    app:cardElevation="@dimen/_2sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imgIconMenu"
+            android:scaleType="fitXY"
+            android:id="@+id/iconMenu"
             android:layout_width="@dimen/_75sdp"
-            android:layout_height="@dimen/_75sdp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars[0]" />
 
         <TextView
-            android:id="@+id/tv_namaMenu"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_namaMakanan"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/btn_selesai"
+            app:layout_constraintStart_toEndOf="@+id/iconMenu"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_kodeMeja"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            android:textStyle="bold"
+            android:textColor="@color/pomegranate"
+            app:layout_constraintEnd_toStartOf="@+id/btn_selesai"
+            app:layout_constraintStart_toEndOf="@+id/iconMenu"
+            app:layout_constraintTop_toBottomOf="@+id/tv_namaMakanan" />
+
+        <TextView
+            android:id="@+id/tv_jumlahPesan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgIconMenu"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.39999998" />
-
-        <TextView
-            android:id="@+id/tv_totalMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/imgIconMenu"
-            app:layout_constraintTop_toBottomOf="@+id/tv_namaMenu" />
+            app:layout_constraintEnd_toStartOf="@+id/btn_selesai"
+            app:layout_constraintStart_toEndOf="@+id/iconMenu"
+            app:layout_constraintTop_toBottomOf="@+id/tv_kodeMeja"
+            app:layout_constraintVertical_bias="0.0" />
 
         <mehdi.sakout.fancybuttons.FancyButton
             android:id="@+id/btn_selesai"
@@ -58,9 +78,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.cardview.widget.CardView>

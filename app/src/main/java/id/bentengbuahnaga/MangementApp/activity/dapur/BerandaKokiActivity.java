@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,12 +30,13 @@ public class BerandaKokiActivity extends AppCompatActivity implements BerandaKok
     private RecyclerView rvDaftarPesanan;
     private BerandaKokiAdapter adapter;
     private View notDataView;
+    private ImageButton back;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda_koki);
-
         presenter = new BerandaKokiPresenter(this);
         presenter.intimain();
     }
@@ -41,6 +44,8 @@ public class BerandaKokiActivity extends AppCompatActivity implements BerandaKok
     @Override
     public void initView() {
         context = this;
+        back = findViewById(R.id.backArrow);
+        title = findViewById(R.id.title_toolbar);
         rvDaftarPesanan = findViewById(R.id.rv_daftarPesanan);
         notDataView = getLayoutInflater().inflate(R.layout.empety_view, (ViewGroup) rvDaftarPesanan.getParent(), false);
         adapter = new BerandaKokiAdapter();
@@ -49,6 +54,13 @@ public class BerandaKokiActivity extends AppCompatActivity implements BerandaKok
 
     @Override
     public void initEvent() {
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        title.setText("Daftar Meja");
         rvDaftarPesanan.setHasFixedSize(true);
         rvDaftarPesanan.setLayoutManager(new LinearLayoutManager(this));
         rvDaftarPesanan.setAdapter(adapter);

@@ -1,8 +1,17 @@
 package id.bentengbuahnaga.MangementApp.activity.login.presenter;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.pixplicity.easyprefs.library.Prefs;
 
-import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefault;
+import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefaultKoki;
 import id.bentengbuahnaga.MangementApp.activity.login.contract.LoginContract;
 import id.bentengbuahnaga.MangementApp.activity.login.model.LoginModel;
 import id.bentengbuahnaga.MangementApp.helper.SharedPreff;
@@ -44,12 +53,12 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void login(String user, String Pass) {
-        Call<ResponseDefault> cekLogin = InitRetrofit.getInstance().ceklogin(user, Pass);
-        cekLogin.enqueue(new Callback<ResponseDefault>() {
+    public void login(String user, String Pass, String Token) {
+        Call<ResponseDefaultKoki> cekLogin = InitRetrofit.getInstance().ceklogin(user, Pass, Token);
+        cekLogin.enqueue(new Callback<ResponseDefaultKoki>() {
             @Override
-            public void onResponse(Call<ResponseDefault> call, Response<ResponseDefault> response) {
-                ResponseDefault res = response.body();
+            public void onResponse(Call<ResponseDefaultKoki> call, Response<ResponseDefaultKoki> response) {
+                ResponseDefaultKoki res = response.body();
                 if (response.isSuccessful()) {
                     if (res.isStatus()) {
                         LoginModel item = res.getPengguna();
@@ -64,11 +73,12 @@ public class LoginPresenter implements LoginContract.Presenter {
             }
 
             @Override
-            public void onFailure(Call<ResponseDefault> call, Throwable t) {
+            public void onFailure(Call<ResponseDefaultKoki> call, Throwable t) {
                 v.tampilPesan(t.getMessage());
             }
         });
     }
+
 
 
 }
