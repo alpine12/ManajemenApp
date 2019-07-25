@@ -12,6 +12,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import id.bentengbuahnaga.MangementApp.R;
+import id.bentengbuahnaga.MangementApp.activity.pelayan.PelayanActivity;
 import id.bentengbuahnaga.MangementApp.app.App;
 
 public class FirebaseMessaging extends FirebaseMessagingService {
@@ -31,7 +32,9 @@ public class FirebaseMessaging extends FirebaseMessagingService {
             String title = remoteMessage.getData().get("title");
             String text = remoteMessage.getData().get("message");
             int id = Integer.parseInt(remoteMessage.getData().get("id"));
+            refreshOnnotif();
             notifications(id,title,text);
+           
 
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
@@ -46,6 +49,7 @@ public class FirebaseMessaging extends FirebaseMessagingService {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+        
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
@@ -76,6 +80,19 @@ public class FirebaseMessaging extends FirebaseMessagingService {
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
         manager.notify(id,builder);
 
+    }
 
+    private void refreshOnnotif(){
+        Log.d(TAG, "refreshOnnotif: ");
+        if (App.getInstance().getCurrentactivity() != null && App.getInstance().getCurrentactivity() instanceof
+                PelayanActivity) {
+                ((PelayanActivity) App.getInstance().getCurrentactivity()).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((PelayanActivity) App.getInstance().getCurrentactivity()).onNotifRefresh();
+                        Log.d(TAG, "run: runnnnnnnnnnnnnnnn");
+                    }
+                });
+            }
     }
 }

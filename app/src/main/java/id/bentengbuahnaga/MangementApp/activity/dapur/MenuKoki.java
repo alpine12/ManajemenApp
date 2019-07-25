@@ -1,6 +1,7 @@
 package id.bentengbuahnaga.MangementApp.activity.dapur;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import id.bentengbuahnaga.MangementApp.helper.PindahActivity;
 public class MenuKoki extends AppCompatActivity {
     private static final String TAG = "MenuKoki";
     private Context mContext;
+    private CardView berandaKoki;
+    private CardView cekBahan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +31,29 @@ public class MenuKoki extends AppCompatActivity {
         setContentView(R.layout.activity_menu_koki);
 
         mContext = this;
+        berandaKoki = findViewById(R.id.beranda_koki);
+        cekBahan = findViewById(R.id.cek_bahan);
+
+        berandaKoki.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                berandaKoki();
+            }
+        });
+
+        cekBahan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cekBahan();
+            }
+        });
     }
 
-    public void berandaKoki(View view) {
+    public void berandaKoki() {
         PindahActivity.Pindah(mContext, BerandaKokiActivity.class);
     }
 
-    public void cekBahan(View view) {
+    public void cekBahan() {
         PindahActivity.Pindah(mContext, CekBahanActivity.class);
     }
 

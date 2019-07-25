@@ -25,6 +25,7 @@ import id.bentengbuahnaga.MangementApp.activity.pelayan.adapter.PelayanAdapter;
 import id.bentengbuahnaga.MangementApp.activity.pelayan.contract.PelayanContract;
 import id.bentengbuahnaga.MangementApp.activity.pelayan.model.PelayanModel;
 import id.bentengbuahnaga.MangementApp.activity.pelayan.presenter.PelayanPresenter;
+import id.bentengbuahnaga.MangementApp.app.App;
 import id.bentengbuahnaga.MangementApp.helper.PindahActivity;
 
 public class PelayanActivity extends AppCompatActivity implements PelayanContract.View {
@@ -102,10 +103,22 @@ public class PelayanActivity extends AppCompatActivity implements PelayanContrac
         adapter.remove(position);
     }
 
+    public void onNotifRefresh(){
+        presenter.daftarAntar();
+        Toast.makeText(mContext, "Refresh", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         presenter.daftarAntar();
+App.getInstance().setCurrentactivity(mContext);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        App.getInstance().setCurrentactivity(mContext);
     }
 
     @Override

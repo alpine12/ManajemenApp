@@ -1,6 +1,7 @@
 package id.bentengbuahnaga.MangementApp.network;
 
 import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefaultKoki;
+import id.bentengbuahnaga.MangementApp.activity.owner.response.ResponsePemilik;
 import id.bentengbuahnaga.MangementApp.activity.pelayan.response_model.ResponseDefaultPelayan;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -74,5 +75,11 @@ public interface ApiInterface {
     @PUT("cek_bahan")
     Call<ResponseDefaultKoki> update_bahan(@Field("id_bahan") String idBahan,
                                            @Field("qty") String Qty);
+
+    /*
+    * Owner
+     */
+    @GET("owner")
+    Call<ResponsePemilik> pemilik();
 
 }

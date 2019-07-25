@@ -9,12 +9,12 @@
     tools:context=".activity.dapur.MenuKoki">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/beranda_koki"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/_16sdp"
         android:layout_weight="50"
         android:background="@color/concrete"
-        android:onClick="berandaKoki"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:padding="@dimen/_16sdp">
@@ -28,12 +28,12 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cek_bahan"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/_16sdp"
         android:layout_weight="50"
         android:background="@color/concrete"
-        android:onClick="cekBahan"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:padding="@dimen/_16sdp">

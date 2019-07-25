@@ -74,7 +74,7 @@ public class DaftarMasakActivity extends AppCompatActivity implements DaftarMasa
                 finish();
             }
         });
-        title.setText("Daftar Masak");
+        title.setText("Daftar Pesanan");
 
         rvDaftarMasak.setHasFixedSize(true);
         rvDaftarMasak.setLayoutManager(new LinearLayoutManager(this));

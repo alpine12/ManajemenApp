@@ -3,6 +3,7 @@ package id.bentengbuahnaga.MangementApp.app;
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.ContextWrapper;
 import android.os.Build;
 
@@ -10,6 +11,8 @@ import com.pixplicity.easyprefs.library.Prefs;
 
 public class App extends Application {
     public static final String CHANEL_ID = "NOTIF";
+    private static App mInstance = null;
+    public Context currentactivity = null;
 
     @Override
     public void onCreate() {
@@ -42,8 +45,22 @@ public class App extends Application {
 
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(chanel);
-
         }
-
     }
+
+    public void setCurrentactivity(Context currentactivity) {
+        this.currentactivity = currentactivity;
+    }
+
+    public Context getCurrentactivity() {
+        return currentactivity;
+    }
+
+    public static App getInstance() {
+        if (mInstance == null) {
+            mInstance = new App();
+        }
+        return mInstance;
+    }
+
 }
