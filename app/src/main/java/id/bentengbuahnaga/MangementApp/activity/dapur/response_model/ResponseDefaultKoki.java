@@ -27,11 +27,18 @@ public class ResponseDefaultKoki {
     @SerializedName("pengguna")
     private LoginModel pengguna;
 
+    @SerializedName("token_key")
+    private String tokenKey;
+
     @SerializedName("message")
     private String message;
 
     @SerializedName("status")
     private boolean status;
+
+    public String getTokenKey() {
+        return tokenKey;
+    }
 
     public List<CekBahanModel> getDaftarBahan() {
         return daftarBahan;

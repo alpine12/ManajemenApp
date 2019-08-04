@@ -63,7 +63,8 @@ public class PelayanActivity extends AppCompatActivity implements PelayanContrac
 
     @Override
     public void loadDaftarAntar(List<PelayanModel> item) {
-        if (item.size() == 0) {
+
+        if (item == null) {
             presenter.dataKosong();
         } else {
             adapter.setNewData(item);
@@ -84,7 +85,6 @@ public class PelayanActivity extends AppCompatActivity implements PelayanContrac
                 }
             });
         }
-
     }
 
     @Override
@@ -112,7 +112,7 @@ public class PelayanActivity extends AppCompatActivity implements PelayanContrac
     protected void onResume() {
         super.onResume();
         presenter.daftarAntar();
-App.getInstance().setCurrentactivity(mContext);
+        App.getInstance().setCurrentactivity(mContext);
     }
 
     @Override

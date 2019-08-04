@@ -1,12 +1,16 @@
 package id.bentengbuahnaga.MangementApp.network;
 
+import com.pixplicity.easyprefs.library.Prefs;
+
 import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefaultKoki;
 import id.bentengbuahnaga.MangementApp.activity.owner.response.ResponsePemilik;
 import id.bentengbuahnaga.MangementApp.activity.pelayan.response_model.ResponseDefaultPelayan;
+import id.bentengbuahnaga.MangementApp.helper.SharedPreff;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Query;
@@ -50,15 +54,18 @@ public interface ApiInterface {
     /*
      * Daftar Antar Pelayan
      */
+    String token = Prefs.getString(SharedPreff.getTokenKey(), null);
+
     @GET("pelayan")
-    Call<ResponseDefaultPelayan> daftarAntar();
+    Call<ResponseDefaultPelayan> daftarAntar(@Header("Authorization") String apiKey);
 
     /*
      * Update Daftar Antar Pelayan
      */
     @FormUrlEncoded
     @PUT("pelayan")
-    Call<ResponseDefaultPelayan> updatePelayan(@Field("status_antar") String status,
+    Call<ResponseDefaultPelayan> updatePelayan(@Header("Authorization") String apiKey,
+                                               @Field("status_antar") String status,
                                                @Field("id_pesanan") String idPesanan,
                                                @Field("id_menu") String idMenu);
 

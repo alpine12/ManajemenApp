@@ -65,6 +65,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                         v.suksesLogin(item.getBagian());
                         v.saveSharedPreff(item);
                         v.tampilPesan(res.getMessage());
+                        Prefs.putString(SharedPreff.getTokenKey(), res.getTokenKey());
 
                     } else {
                         v.tampilPesan(res.getMessage());

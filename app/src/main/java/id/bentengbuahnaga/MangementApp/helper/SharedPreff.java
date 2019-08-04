@@ -8,6 +8,11 @@ public class SharedPreff {
     private static String bagian = "bagian";
     private static String isLogin = "isLogin";
     private static String levelLogin = "levelLogin";
+    private static String tokenKey = "tokenKey";
+
+    public static String getTokenKey() {
+        return tokenKey;
+    }
 
     public static String getLevelLogin() {
         return levelLogin;
