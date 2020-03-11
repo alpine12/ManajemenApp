@@ -1,7 +1,7 @@
 package id.bentengbuahnaga.MangementApp.services;
 
 import android.app.Notification;
-import android.app.NotificationManager;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
@@ -11,12 +11,17 @@ import androidx.core.app.NotificationManagerCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import id.bentengbuahnaga.MangementApp.R;
 import id.bentengbuahnaga.MangementApp.activity.pelayan.PelayanActivity;
 import id.bentengbuahnaga.MangementApp.app.App;
 
 public class FirebaseMessaging extends FirebaseMessagingService {
     private static final String TAG = "FirebaseMessaging";
+    private Bitmap bitmap;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -31,9 +36,11 @@ public class FirebaseMessaging extends FirebaseMessagingService {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
             String title = remoteMessage.getData().get("title");
             String text = remoteMessage.getData().get("message");
+            String gambar = remoteMessage.getData().get("gambar");
+            bitmap = getBitmapfromUrl(gambar);
             int id = Integer.parseInt(remoteMessage.getData().get("id"));
             refreshOnnotif();
-            notifications(id,title,text);
+            notifications(id, title, text, bitmap);
            
 
             if (/* Check if data needs to be processed by long running job */ true) {
@@ -66,10 +73,11 @@ public class FirebaseMessaging extends FirebaseMessagingService {
         //sendRegistrationToServer(token);
     }
 
-    private void notifications(int id, String title, String text){
+    private void notifications(int id, String title, String text, Bitmap gambar) {
+
         Notification builder = new NotificationCompat.Builder(this, App.CHANEL_ID)
                 .setSmallIcon(R.mipmap.ic_icon_round)
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.empty_icon))
+                .setLargeIcon(gambar)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setContentInfo("info")
@@ -94,5 +102,23 @@ public class FirebaseMessaging extends FirebaseMessagingService {
                     }
                 });
             }
+    }
+
+    public Bitmap getBitmapfromUrl(String imageUrl) {
+        try {
+            URL url = new URL(imageUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap bitmap = BitmapFactory.decodeStream(input);
+            return bitmap;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+
+        }
     }
 }
