@@ -14,6 +14,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Random;
 
 import id.bentengbuahnaga.MangementApp.R;
 import id.bentengbuahnaga.MangementApp.activity.pelayan.PelayanActivity;
@@ -38,8 +39,9 @@ public class FirebaseMessaging extends FirebaseMessagingService {
             String text = remoteMessage.getData().get("message");
             String gambar = remoteMessage.getData().get("gambar");
             bitmap = getBitmapfromUrl(gambar);
-            int id = Integer.parseInt(remoteMessage.getData().get("id"));
-            refreshOnnotif();
+            int id = new Random().nextInt(1000);
+//            int id = Integer.parseInt(remoteMessage.getData().get("id"));
+            // refreshOnnotif();
             notifications(id, title, text, bitmap);
            
 
