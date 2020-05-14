@@ -18,9 +18,6 @@ public class LoginModel implements LoginContract.Model {
     @SerializedName("bagian")
     private String bagian;
 
-    @SerializedName("gambar")
-    private String gambar;
-
     @SerializedName("email")
     private String email;
 
@@ -47,10 +44,6 @@ public class LoginModel implements LoginContract.Model {
 
     public String getBagian() {
         return bagian;
-    }
-
-    public String getGambar() {
-        return gambar;
     }
 
     public String getEmail() {

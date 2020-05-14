@@ -1,14 +1,5 @@
 package id.bentengbuahnaga.MangementApp.activity.login.presenter;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import id.bentengbuahnaga.MangementApp.activity.dapur.response_model.ResponseDefaultKoki;
@@ -38,16 +29,22 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void cekLogin() {
         if (Prefs.getBoolean(SharedPreff.getIsLogin(), false)) {
             String loginLevel = Prefs.getString(SharedPreff.getBagian(), null);
-            if (loginLevel.equals("1")) {
-                v.suksesLogin(loginLevel);
-            } else if (loginLevel.equals("4")) {
-                v.suksesLogin(loginLevel);
-            } else if (loginLevel.equals("5")) {
-                v.suksesLogin(loginLevel);
-            } else if (loginLevel.equals("6")) {
-                v.suksesLogin(loginLevel);
-            } else {
-                v.tampilPesan("Hak akses tidak dimiliki");
+            switch (loginLevel) {
+                case "1":
+                    v.suksesLogin(loginLevel);
+                    break;
+                case "4":
+                    v.suksesLogin(loginLevel);
+                    break;
+                case "5":
+                    v.suksesLogin(loginLevel);
+                    break;
+                case "6":
+                    v.suksesLogin(loginLevel);
+                    break;
+                default:
+                    v.tampilPesan("Hak akses tidak dimiliki");
+                    break;
             }
         }
     }
@@ -58,18 +55,21 @@ public class LoginPresenter implements LoginContract.Presenter {
         cekLogin.enqueue(new Callback<ResponseDefaultKoki>() {
             @Override
             public void onResponse(Call<ResponseDefaultKoki> call, Response<ResponseDefaultKoki> response) {
-                ResponseDefaultKoki res = response.body();
+
                 if (response.isSuccessful()) {
+                    ResponseDefaultKoki res = response.body();
                     if (res.isStatus()) {
                         LoginModel item = res.getPengguna();
                         v.suksesLogin(item.getBagian());
                         v.saveSharedPreff(item);
                         v.tampilPesan(res.getMessage());
-                        Prefs.putString(SharedPreff.getTokenKey(), res.getTokenKey());
-
+                        Prefs.putString(SharedPreff.getTokenKey(), res.getTokenKey());//
                     } else {
                         v.tampilPesan(res.getMessage());
                     }
+
+                } else {
+                    v.tampilPesan("error");
                 }
             }
 

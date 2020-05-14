@@ -24,7 +24,6 @@ public class ResponseDefaultKoki {
     @SerializedName("daftar pesanan")
     private List<BerandaKokiModel> daftarPesanan;
 
-    @SerializedName("pengguna")
     private LoginModel pengguna;
 
     @SerializedName("token_key")

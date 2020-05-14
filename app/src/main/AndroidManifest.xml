@@ -22,7 +22,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.dapur.CekBahanActivity"></activity>
+        <activity android:name=".activity.dapur.CekBahanActivity" />
         <activity
             android:name=".activity.dapur.MenuKoki"
             android:label="Beranda"
@@ -37,12 +37,6 @@
         <activity android:name=".activity.dapur.DaftarMasakActivity" />
         <activity android:name=".activity.dapur.BerandaKokiActivity" />
         <activity android:name=".activity.login.LoginActivity" />
-
-        <service android:name=".services.FirebaseMessaging">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
 
         <activity android:name=".activity.SplashScreen">
             <intent-filter>

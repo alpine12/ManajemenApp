@@ -12,14 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import id.bentengbuahnaga.MangementApp.R;
-import id.bentengbuahnaga.MangementApp.activity.dapur.BerandaKokiActivity;
 import id.bentengbuahnaga.MangementApp.activity.dapur.MenuKoki;
 import id.bentengbuahnaga.MangementApp.activity.login.contract.LoginContract;
 import id.bentengbuahnaga.MangementApp.activity.login.model.LoginModel;
@@ -58,19 +56,28 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void initEvent() {
         presenter.cekLogin();
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.login(user.getText().toString(), pass.getText().toString(), token);
+            }
+        });
         getToken();
     }
 
     @Override
     public void suksesLogin(String level) {
-        if (level.equals("1")) {
-            PindahActivity.Pindah(context, OwnerActivity.class);
-        } else if (level.equals("4")) {
-            PindahActivity.Pindah(context, PelayanActivity.class);
-        } else if (level.equals("5")) {
-            PindahActivity.Pindah(context, MenuKoki.class);
-        } else if (level.equals("6")) {
-            PindahActivity.Pindah(context, MenuKoki.class);
+        switch (level) {
+            case "1":
+                PindahActivity.Pindah(context, OwnerActivity.class);
+                break;
+            case "4":
+                PindahActivity.Pindah(context, PelayanActivity.class);
+                break;
+            case "5":
+            case "6":
+                PindahActivity.Pindah(context, MenuKoki.class);
+                break;
         }
         finish();
     }
@@ -88,11 +95,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void tampilPesan(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
         Log.d(TAG, "tampilPesan: " + message);
-    }
-
-    public void login(View view) {
-
-        presenter.login(user.getText().toString(), pass.getText().toString(), token);
     }
 
     private void getToken() {

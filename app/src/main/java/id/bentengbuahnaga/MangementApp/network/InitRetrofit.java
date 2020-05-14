@@ -13,7 +13,7 @@ public class InitRetrofit {
 //    private static String BaseUrl =URL+"simcafe/api_manajemen/";
 //    private static String IMG_URL = URL+"simcafe/assets/img/foto_menu/";
 
-    private static final String BASE_URL = "https://buatinweb.my.id/api_manajemen/";
+    private static final String BASE_URL = "https://manajemen.buatinweb.my.id/api_manajemen/";
     private static final String ASSETS = "https://manajemen.buatinweb.my.id/assets/img/";
     private static final String IMAGEURL = ASSETS+"foto_menu/";
 
